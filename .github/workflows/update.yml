@@ -1,0 +1,13 @@
+name: update-state
+run-name: Aktualizace stavu
+on:
+    schedule:
+    - cron: '40 0,8,16 * * *'
+permissions:
+    contents: write
+jobs:
+    update-state:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - run: ./update.sh
