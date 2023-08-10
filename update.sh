@@ -19,7 +19,9 @@ if [[ "$bio" == "" ]]; then
 fi
 
 if [[ "$bio" == *"17.11.2022🤍"* ]] || [[ "$bio" == *"@eli._fili"* ]]; then
+	echo "Jsou spolu"
 	if [ $(cat prev) == "0" ]; then
+ 		echo "Aktualizovat stav na 1"
 		echo "1" > prev
 		git checkout main -- jestejsouspolu.html
 		mv jsoujestespolu.html index.html
@@ -27,7 +29,9 @@ if [[ "$bio" == *"17.11.2022🤍"* ]] || [[ "$bio" == *"@eli._fili"* ]]; then
 		git push
 	fi
 else
+	echo "Nejsou spolu"
 	if [ $(cat prev) == "1" ]; then
+ 		echo "Aktualizovat stav na 0"
 		echo "0" > prev
 		git checkout main -- uznejsouspolu.html
 		mv uznejsouspolu.html index.html
