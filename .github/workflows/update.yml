@@ -2,7 +2,7 @@ name: update-state
 run-name: Aktualizace stavu
 on:
     schedule:
-    - cron: '40 0,8,16 * * *'
+    - cron: '40 8,16,19 * * *'
 permissions:
     contents: write
 jobs:
