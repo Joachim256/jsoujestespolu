@@ -1,7 +1,7 @@
 #!/bin/bash
 
+git pull --all
 git switch website
-git pull
 git config --global user.name "Joachim256"
 git config --global user.email "Joachim256@users.noreply.github.com"
 
@@ -13,7 +13,7 @@ bio=$(curl -sS -b ~/cookies -H "x-ig-app-id: 936619743392459" https://www.instag
 
 echo "Bio is $bio"
 
-if [ "$bio" == "" ]; then
+if [[ "$bio" == "" ]]; then
 	echo "Failed to fetch bio"
 	exit 1
 
