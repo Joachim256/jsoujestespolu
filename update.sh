@@ -16,6 +16,7 @@ echo "Bio is $bio"
 if [[ "$bio" == "" ]]; then
 	echo "Failed to fetch bio"
 	exit 1
+fi
 
 if [[ "$bio" == *"17.11.2022🤍"* ]] || [[ "$bio" == *"@eli._fili"* ]]; then
 	if [ $(cat prev) == "0" ]; then
