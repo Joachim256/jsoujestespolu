@@ -14,4 +14,6 @@ jobs:
             - name: Spustit aktualizační skript
               env:
                 IGSESSIONID: ${{ secrets.IGSESSIONID }}
+                IGUSERID: ${{ vars.IGUSERID }}
+                GH_USERNAME: ${{ github.actor }}
               run: ./update.sh
