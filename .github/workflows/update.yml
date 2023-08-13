@@ -3,6 +3,7 @@ run-name: Aktualizace stavu
 on:
     schedule:
     - cron: '40 8,16,19 * * *'
+    workflow_dispatch:
 permissions:
     contents: write
 jobs:
