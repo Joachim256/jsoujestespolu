@@ -9,12 +9,24 @@ git config --global user.email "$GH_USERNAME@users.noreply.github.com"
 curl -sS -c ~/cookies -H "x-ig-app-id: 936619743392459" -H "Cookie: sessionid=$IGSESSIONID" https://www.instagram.com/api/v1/users/$IGUSERID/info/
 printf ".instagram.com\tTRUE\t/\tTRUE\t2521843200\tsessionid\t%s\n" "$IGSESSIONID" >> ~/cookies
 # request to get data
-bio=$(curl -sS -b ~/cookies -H "x-ig-app-id: 936619743392459" https://www.instagram.com/api/v1/users/$IGUSERID/info/ | jq '.user.biography')
+json=$(curl -sS -b ~/cookies -H "x-ig-app-id: 936619743392459" https://www.instagram.com/api/v1/users/$IGUSERID/info/)
 
-echo "Bio is $bio"
+echo $json
 
-if [[ "$bio" == "" ]]; then
-	echo "Failed to fetch bio"
+if [[ $(echo $json | jq '.message') == "checkpoint_required" ]]; then
+	echo "Vyžadováno ověření"
+	if [ -n $NTFY_URL ]; then
+		url=$(echo $json | jq '.checkpoint_url')
+		curl -sS -d "Vyžadováno ověření" -H "Actions: view, Ověřit, $url, clear=true" $NTFY_URL
+	fi
+	exit 1
+fi
+
+bio=$(echo $json | jq '.user.biography')
+echo "Bio je $bio"
+
+if [[ "$bio" == "" || "$bio" == "null" ]]; then
+	echo "Nepodařilo se načíst bio"
 	exit 1
 fi
 

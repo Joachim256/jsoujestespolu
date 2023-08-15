@@ -16,5 +16,6 @@ jobs:
               env:
                 IGSESSIONID: ${{ secrets.IGSESSIONID }}
                 IGUSERID: ${{ vars.IGUSERID }}
+                NTFY_URL: ${{ vars.NTFY_URL }}
                 GH_USERNAME: ${{ github.actor }}
               run: ./update.sh
