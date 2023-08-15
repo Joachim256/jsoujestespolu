@@ -34,6 +34,7 @@ if [[ "$bio" == *"17.11.2022🤍"* ]] || [[ "$bio" == *"@eli._fili"* ]]; then
 	echo "Jsou spolu"
 	if [ $(cat prev) == "0" ]; then
  		echo "Aktualizovat stav na 1"
+		if [ -n $NTFY_URL ]; then curl -sS -d "Jsou spolu" $NTFY_URL; fi
 		echo "1" > prev
 		git checkout main -- jestejsouspolu.html
 		mv jsoujestespolu.html index.html
@@ -44,6 +45,7 @@ else
 	echo "Nejsou spolu"
 	if [ $(cat prev) == "1" ]; then
  		echo "Aktualizovat stav na 0"
+		if [ -n $NTFY_URL ]; then curl -sS -d "Nejsou spolu" $NTFY_URL; fi
 		echo "0" > prev
 		git checkout main -- uznejsouspolu.html
 		mv uznejsouspolu.html index.html
