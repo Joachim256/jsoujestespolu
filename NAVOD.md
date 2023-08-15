@@ -62,7 +62,7 @@ Zaškrtněte **Include all branches**, zvolte název a klikněte **Create reposi
 
 	1. Změňte podmínku
 
-		Upravte si podmínku, která vyhodnotí, jestli jsou spolu nebo ne. Nachází se na řádku **21**.
+		Upravte si podmínku, která vyhodnotí, jestli jsou spolu nebo ne. Nachází se na řádku **33**.
 
 		Pokud je tato podmínka pravdivá, bude zobrazováno *jsou spolu*.  
 		Tady je pár příkladů:
