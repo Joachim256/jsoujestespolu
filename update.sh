@@ -13,7 +13,7 @@ json=$(curl -sS -b ~/cookies -H "x-ig-app-id: 936619743392459" https://www.insta
 
 echo $json
 
-if [[ $(echo $json | jq '.message') == "checkpoint_required" ]]; then
+if [[ $(echo $json | jq '.message') == "\"checkpoint_required\"" ]]; then
 	echo "Vyžadováno ověření"
 	if [ -n $NTFY_URL ]; then
 		url=$(echo $json | jq '.checkpoint_url')
